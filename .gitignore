@@ -1,0 +1,11 @@
+target
+bin
+.settings
+.classpath
+.project
+.checkstyle
+.springBeans
+velocity.log
+.DS_Store
+*/build/*
+.gradle/*

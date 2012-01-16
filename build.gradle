@@ -1,0 +1,25 @@
+subprojects { 
+
+  apply plugin: 'groovy'
+  apply plugin: 'java'
+  apply plugin: 'eclipse'
+
+  configurations.all {
+    transitive = true
+    resolutionStrategy {
+      failOnVersionConflict()
+    }
+  }
+
+  repositories {
+    mavenCentral()
+    mavenLocal()
+  }
+
+  dependencies {
+    compile "org.twitter4j:twitter4j-stream:2.2.5"
+    compile "commons-lang:commons-lang:2.5"
+    
+    testCompile "junit:junit:4.7"
+  }
+}
