@@ -1,5 +1,6 @@
 package com.zauberlabs.twitter4g.api.internal
 
+import twitter4j.HashtagEntity
 import java.util.Collection
 import java.util.List
 
@@ -20,8 +21,10 @@ class DefaultUserTimeline implements UserTimeline {
   Collection<String> getStatusTextsWithHashtag(String hashtag) {
     List<String> filteredTimeline = []
     for (Status status : twitter.userTimeline) {
-      if (hashtag in status.hashtagEntities) {
-        filteredTimeline << status.text
+      for (HashtagEntity hashtagEntity : status.hashtagEntities) {
+        if (hashtag == hashtagEntity.text) {
+          filteredTimeline << status.text
+        }
       }
     }
     filteredTimeline

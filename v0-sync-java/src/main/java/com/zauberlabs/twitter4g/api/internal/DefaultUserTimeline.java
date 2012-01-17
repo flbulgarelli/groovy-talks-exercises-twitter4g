@@ -1,18 +1,18 @@
 package com.zauberlabs.twitter4g.api.internal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
 
-import com.zauberlabs.twitter4g.api.UserTimeline;
-
+import twitter4j.HashtagEntity;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+
+import com.zauberlabs.twitter4g.api.UserTimeline;
 
 public class DefaultUserTimeline implements UserTimeline {
 
@@ -32,8 +32,10 @@ public class DefaultUserTimeline implements UserTimeline {
     }
     List<String> filteredTimeline = new ArrayList<String>();
     for (Status status : userTimeline) {
-      if (Arrays.asList(status.getHashtagEntities()).contains(hashtag)) {
-        filteredTimeline.add(status.getText());
+      for (HashtagEntity hashtagEntity : status.getHashtagEntities()) {
+        if (hashtagEntity.getText().equals(hashtag)) {
+          filteredTimeline.add(status.getText());
+        }
       }
     }
     return filteredTimeline;

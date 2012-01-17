@@ -2,12 +2,11 @@ package com.zauberlabs.twitter4g.api.internal;
 
 import org.apache.commons.lang.Validate;
 
-import com.zauberlabs.twitter4g.api.UserTimeline;
-import com.zauberlabs.twitter4g.api.UserTimelineFactory;
-import com.zauberlabs.twitter4g.api.groovy.internal.DefaultUserTimeline;
-
 import twitter4j.TwitterFactory;
 import twitter4j.conf.Configuration;
+
+import com.zauberlabs.twitter4g.api.UserTimeline;
+import com.zauberlabs.twitter4g.api.UserTimelineFactory;
 
 public class DefaultUserTimelineFactory implements UserTimelineFactory {
 

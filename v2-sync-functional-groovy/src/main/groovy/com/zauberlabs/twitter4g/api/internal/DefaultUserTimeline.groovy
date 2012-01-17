@@ -18,7 +18,7 @@ class DefaultUserTimeline implements UserTimeline {
   }
 
   Collection<String> getStatusTextsWithHashtag(String hashtag) {
-    getStatusTexts { Status it -> it.hashtagEntities }
+    getStatusTexts { Status it -> hashtag in it.hashtagEntities*.text }
   }
 
   Collection<String> getStatusTexts(Closure<Status> predicate) {
