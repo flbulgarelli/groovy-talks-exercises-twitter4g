@@ -15,11 +15,11 @@ class AsyncUserTimeline implements UserTimeline {
     this.twitterStream = twitterStream
   }
 
-  void withStatusTextsWithHashtagDo(String hashtag, Closure<String> clousure) {
+  def withStatusTextsWithHashtagDo(String hashtag, Closure<String> clousure) {
     withStatusTextsDo { Status it -> it.hashtagEntities }
   }
 
-  void withStatusTextsDo(Closure<Status> predicate, Closure<String> closure) {
+  def withStatusTextsDo(Closure<Status> predicate, Closure<String> closure) {
     twitterStream.addListener(new UserStreamAdapter() {
           void onStatus(Status status) {
             if(predicate(status))

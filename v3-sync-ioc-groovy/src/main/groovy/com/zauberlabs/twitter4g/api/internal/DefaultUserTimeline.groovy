@@ -17,11 +17,11 @@ class DefaultUserTimeline implements UserTimeline {
     this.twitter = twitter
   }
 
-  void withStatusTextsWithHashtagDo(String hashtag, Closure<String> clousure) {
-    withStatusTextsDo { Status it -> it.hashtagEntities }
+  def withStatusTextsWithHashtagDo(String hashtag, Closure<String> closure) {
+    withStatusTextsDo( { Status it -> hashtag in it.hashtagEntities*.text }, closure)
   }
 
-  void withStatusTextsDo(Closure<Status> predicate, Closure<String> closure) {
+  def withStatusTextsDo(Closure<Status> predicate, Closure<String> closure) {
     twitter.userTimeline.findAll(predicate).collect { Status it -> it.text }.each(closure)
   }
 

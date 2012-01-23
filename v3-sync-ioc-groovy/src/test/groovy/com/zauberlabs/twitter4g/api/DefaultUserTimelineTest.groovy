@@ -1,6 +1,4 @@
-package com.zauberlabs.twitter4g.api.internal
-
-import static org.junit.Assert.*
+package com.zauberlabs.twitter4g.api
 
 import java.util.List
 
@@ -11,8 +9,9 @@ import twitter4j.ResponseList
 import twitter4j.Status
 import twitter4j.Twitter
 
+import com.zauberlabs.twitter4g.api.internal.DefaultUserTimeline
 
-class SyncUserTimelineTest {
+public class DefaultUserTimelineTest {
 
   @Test public void testName() {
     def twitterMock = twitter('zaubersoftware',
@@ -32,7 +31,7 @@ class SyncUserTimelineTest {
         ])
     
     def results = [] 
-    assert new SyncUserTimeline(twitterMock).withStatusTextsWithHashtagDo('#magic') {  results << it } == [
+    assert new DefaultUserTimeline(twitterMock).withStatusTextsWithHashtagDo('#magic') {  results << it } == [
       'Nuevos desafios para 2012: apender groovy y hacer mucha magia',
       'Otro desafío: blah blah blah'
     ]
