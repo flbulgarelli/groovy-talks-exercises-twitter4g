@@ -19,7 +19,7 @@ subprojects {
   dependencies {
     compile "org.twitter4j:twitter4j-stream:2.2.5"
     compile "commons-lang:commons-lang:2.5"
-    
+    compile 'org.codehaus.groovy:groovy-all:1.8.4'
     testCompile "junit:junit:4.7"
   }
 }

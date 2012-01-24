@@ -18,8 +18,8 @@ public class DefaultUserTimelineFactory implements UserTimelineFactory {
     this.configuration = configuration;
   }
 
-  public UserTimeline timeline(String username) {
-    return new DefaultUserTimeline(twitterFactory(), username);
+  public UserTimeline timeline(String screenName) {
+    return new DefaultUserTimeline(twitterFactory(), screenName);
   }
 
   protected Twitter twitterFactory() {

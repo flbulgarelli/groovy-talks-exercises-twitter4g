@@ -12,18 +12,18 @@ import com.zauberlabs.twitter4g.api.UserTimeline
 class DefaultUserTimeline implements UserTimeline {
 
   final Twitter twitter
-  final String userName
+  final String screenName
 
-  DefaultUserTimeline(Twitter twitter, String username) {
+  DefaultUserTimeline(Twitter twitter, String screenName) {
     assert twitter != null, "Twitter client must be non null"
-    assert username != null && !username.empty, "Username must ne non empty"
+    assert screenName != null && !screenName.empty, "screenName must ne non empty"
     this.twitter = twitter
-    this.userName = username
+    this.screenName = screenName
   }
 
   Collection<String> getStatusTextsWithHashtag(String hashtag) {
     List<String> filteredTimeline = []
-    for (Status status : twitter.getUserTimeline(userName)) {
+    for (Status status : twitter.getUserTimeline(screenName)) {
       for (HashtagEntity hashtagEntity : status.hashtagEntities) {
         if (hashtag == hashtagEntity.text) {
           filteredTimeline << status.text

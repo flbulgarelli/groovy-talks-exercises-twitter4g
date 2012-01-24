@@ -11,13 +11,13 @@ import com.zauberlabs.twitter4g.api.UserTimeline
 class DefaultUserTimeline implements UserTimeline {
 
   final Twitter twitter
-  final String userName
+  final String screenName
 
-  DefaultUserTimeline(Twitter twitter, String username) {
+  DefaultUserTimeline(Twitter twitter, String screenName) {
     assert twitter != null, "Twitter client must be non null"
-    assert username != null && !username.empty, "Username must ne non empty"
+    assert screenName != null && !screenName.empty, "screenName must ne non empty"
     this.twitter = twitter
-    this.userName = username
+    this.screenName = screenName
   }
 
   Collection<String> getStatusTextsWithHashtag(String hashtag) {
@@ -25,7 +25,7 @@ class DefaultUserTimeline implements UserTimeline {
   }
 
   Collection<String> getStatusTexts(Closure<Status> predicate) {
-    twitter.getUserTimeline(userName).findAll(predicate).collect { Status it -> it.text }
+    twitter.getUserTimeline(screenName).findAll(predicate).collect { Status it -> it.text }
   }
 
   String getScreenName() {
