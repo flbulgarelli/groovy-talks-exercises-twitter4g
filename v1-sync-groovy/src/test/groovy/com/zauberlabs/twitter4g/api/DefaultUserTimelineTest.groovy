@@ -30,7 +30,7 @@ public class DefaultUserTimelineTest {
             hashtag('#blah')]
           )
         ])
-    assert new DefaultUserTimeline(twitterMock).getStatusTextsWithHashtag('#magic') == [
+    assert new DefaultUserTimeline(twitterMock, 'zaubertest').getStatusTextsWithHashtag('#magic') == [
       'Nuevos desafios para 2012: apender groovy y hacer mucha magia',
       'Otro desafío: blah blah blah'
     ]

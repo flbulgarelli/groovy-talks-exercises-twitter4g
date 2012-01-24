@@ -17,7 +17,7 @@ class Workspace {
           .setOAuthAccessToken("50074149-oj1cTPiL9eZDJTmEt9r1ppw4iWNZffRcvM0NWbIWQ") //
           .setOAuthAccessTokenSecret("u47IVnL3sdt3CAVoNKafLDUFfQiK0tOx1zOUinrJ0") //
         .build()) //
-        .timeline() //
+        .timeline('zaubertest') //
         .getStatusTextsWithHashtag("programming")
 
     texts.each { println it }

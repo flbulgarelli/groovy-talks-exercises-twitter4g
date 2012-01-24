@@ -17,16 +17,19 @@ import com.zauberlabs.twitter4g.api.UserTimeline;
 public class DefaultUserTimeline implements UserTimeline {
 
   private final Twitter twitter;
+  private final String screenName;
 
-  public DefaultUserTimeline(Twitter twitter) {
+  public DefaultUserTimeline(Twitter twitter, String screenName) {
     Validate.notNull(twitter, "Twitter client must be non null");
+    Validate.notEmpty(screenName);
     this.twitter = twitter;
+    this.screenName = screenName;
   }
 
   public Collection<String> getStatusTextsWithHashtag(String hashtag) {
     List<Status> userTimeline;
     try {
-      userTimeline = twitter.getUserTimeline();
+      userTimeline = twitter.getUserTimeline(screenName);
     } catch (TwitterException e) {
       throw new UnhandledException(e);
     }

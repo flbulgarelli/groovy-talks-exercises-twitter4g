@@ -2,6 +2,7 @@ package com.zauberlabs.twitter4g.api.internal;
 
 import org.apache.commons.lang.Validate;
 
+import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.Configuration;
 
@@ -17,8 +18,12 @@ public class DefaultUserTimelineFactory implements UserTimelineFactory {
     this.configuration = configuration;
   }
 
-  public UserTimeline timeline() {
-    return new DefaultUserTimeline(new TwitterFactory(configuration).getInstance());
+  public UserTimeline timeline(String username) {
+    return new DefaultUserTimeline(twitterFactory(), username);
+  }
+
+  protected Twitter twitterFactory() {
+    return new TwitterFactory(configuration).getInstance();
   }
 
 }
